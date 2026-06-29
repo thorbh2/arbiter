@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Arbiter — Disputes settled by evidence</title>
+<meta name="description" content="AI dispute resolution on GenLayer. Two parties each stake and cite evidence; a validator set reads both cases and agrees who is right. The winner takes the pot. No human arbitrator, no appeal." />
+<link rel="stylesheet" href="./styles.css?v=6">
+<link rel="preconnect" href="https://rsms.me/">
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top"><span class="tri"></span> Arbiter</a>
+    <div class="nav-mid">
+      <a href="#how">How it works</a>
+      <a href="#docket">Docket</a>
+      <a href="#why">Why</a>
+      <a href="https://docs.genlayer.com/" target="_blank" rel="noopener">GenLayer ↗</a>
+    </div>
+    <div class="nav-end">
+      <span id="walletslot"><button class="btn ghost sm" id="connectBtn">Connect</button></span>
+      <button class="btn solid sm" id="navPostBtn">Open dispute</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <span class="tag">AI DISPUTE RESOLUTION · GENLAYER</span>
+    <h1>Settle disputes<br>with evidence.</h1>
+    <p class="sub">Two parties who disagree each stake GEN and state their case, citing public evidence. A validator set reads both sides and agrees who is in the right. The winner takes the pot. No human arbitrator, no appeal.</p>
+    <div class="hero-cta">
+      <button class="btn solid lg" id="heroPostBtn">Open a dispute <span class="arr">→</span></button>
+      <a class="btn line lg" href="#how">How it works</a>
+    </div>
+  </div>
+  <div class="hero-frame">
+    <canvas id="scaleCanvas"></canvas>
+    <div class="frame-label"><span>EQUIVALENCE PRINCIPLE</span><span class="mono" id="frameStat">— disputes on the docket</span></div>
+  </div>
+</header>
+
+<!-- STAT BAR (bordered cells) -->
+<section class="statbar">
+  <div class="stat-cell"><b id="stTotal">0</b><span>Disputes filed</span></div>
+  <div class="stat-cell"><b id="stRuled">0</b><span>Ruled by consensus</span></div>
+  <div class="stat-cell"><b id="stLocked">0</b><span>GEN locked in escrow</span></div>
+  <div class="stat-cell"><button class="btn line sm" id="refreshBtn">↻ Sync</button></div>
+</section>
+
+<main>
+
+  <!-- HOW: bordered numbered cards -->
+  <section class="how" id="how">
+    <div class="block-head">
+      <span class="tag dark">HOW IT WORKS</span>
+      <h2>Three steps from clash to verdict.</h2>
+    </div>
+    <div class="grid-3 bordered">
+      <div class="cell"><span class="cell-n">01</span><h3>Open</h3><p>The claimant states the topic, makes their case, cites evidence, and stakes GEN. The dispute waits for a respondent.</p></div>
+      <div class="cell"><span class="cell-n">02</span><h3>Join</h3><p>The respondent files their side, cites their own evidence, and matches the stake exactly. The pot is now locked.</p></div>
+      <div class="cell"><span class="cell-n">03</span><h3>Rule</h3><p>Validators read both cases and the evidence and agree on a winner. The winner takes the pot; a true tie refunds both.</p></div>
+    </div>
+  </section>
+
+  <!-- DOCKET -->
+  <section class="docket" id="docket">
+    <div class="block-head row">
+      <div><span class="tag dark">ON-CHAIN, RIGHT NOW</span><h2>The docket</h2></div>
+      <span class="mono count" id="docketCount">—</span>
+    </div>
+    <div class="cases" id="caseList"><div class="c-empty">Reading the chain…</div></div>
+  </section>
+
+  <!-- WHY: bordered cells -->
+  <section class="why" id="why">
+    <div class="block-head"><span class="tag dark">WHY IT WORKS</span><h2>Skin in the game, evidence on the table.</h2></div>
+    <div class="grid-3 bordered">
+      <div class="cell"><i class="ph-bold ph-coins"></i><h3>Both stake equally</h3><p>Filing a frivolous case means risking real GEN. Only genuine disputes get opened, and both sides have something to lose.</p></div>
+      <div class="cell"><i class="ph-bold ph-magnifying-glass"></i><h3>Evidence over rhetoric</h3><p>The arbiter reads the cited evidence, not just the arguments. The side whose proof holds up is the side that wins.</p></div>
+      <div class="cell"><i class="ph-bold ph-trophy"></i><h3>The winner takes the pot</h3><p>One verdict, paid instantly on-chain. No appeals, no negotiation. A genuine tie refunds both sides.</p></div>
+    </div>
+  </section>
+
+  <!-- CTA black block -->
+  <section class="cta">
+    <h2>Open a dispute. Let the evidence rule.</h2>
+    <p>State your case, stake your claim, and let an impartial validator set decide.</p>
+    <button class="btn invert lg" id="ctaPostBtn">Open a dispute <span class="arr">→</span></button>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <a class="brand" href="#top"><span class="tri"></span> Arbiter</a>
+    <div class="foot-links">
+      <a href="#how">How it works</a><a href="#docket">Docket</a><a href="#why">Why</a>
+      <a href="https://docs.genlayer.com/developers/intelligent-contracts/equivalence-principle" target="_blank" rel="noopener">Equivalence Principle ↗</a>
+      <a id="contractLink" href="https://explorer-studio.genlayer.com/contracts/0x7353435cE8B7fE0eCdBd59a048e1AC6234532154" target="_blank" rel="noopener">Contract 0x7353...2154 -></a>
+    </div>
+    <span class="foot-net"><span class="net-dot"></span>studionet · live</span>
+  </div>
+  <div class="foot-base">Arbiter · AI dispute resolution on GenLayer studionet</div>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-h"><h3 id="drawerTitle">Open a dispute</h3><button class="icon-btn" id="closeDrawer" aria-label="Close">✕</button></div>
+  <div class="drawer-b" id="drawerBody"></div>
+</aside>
+<div id="log"></div>
+<script type="module" src="./app.js?v=20"></script>
+</body>
+</html>
