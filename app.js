@@ -1,5 +1,5 @@
 import { makeReader, write, connectWallet, activeAccount, balanceOf, short, toGen, GEN, fmtErr }
-  from "../shared/genlayer-lite.js";
+  from "./shared/genlayer-lite.js";
 
 const CONTRACT = "0x7353435cE8B7fE0eCdBd59a048e1AC6234532154";
 const { read } = makeReader(CONTRACT);
