@@ -98,7 +98,7 @@ Arbiter ships as a standalone static app:
 From the private workspace:
 
 ```powershell
-cd C:\Users\aspronim\Desktop\design-skills
+cd <private-workspace-root>
 npm run preview:start
 npm run preview:project -- 10-arbiter
 ```
@@ -112,7 +112,7 @@ http://localhost:8080/10-arbiter/
 ## Publish / Redeploy
 
 ```powershell
-cd C:\Users\aspronim\Desktop\design-skills
+cd <private-workspace-root>
 npm run publish:project -- -Project 10-arbiter -Repo https://github.com/thorbh2/arbiter.git
 ```
 
