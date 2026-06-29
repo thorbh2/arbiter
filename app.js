@@ -82,7 +82,7 @@ function openDetail(id) {
   $("drawerTitle").textContent = "Dispute #" + id;
   let verdict = "";
   if (st === RULED) {
-    const w = ruling === SIDE_CLAIMANT ? "Claimant wins" : ruling === SIDE_RESPONDENT ? "Respondent wins" : "Tie — both refunded";
+    const w = ruling === SIDE_CLAIMANT ? "Claimant wins" : ruling === SIDE_RESPONDENT ? "Respondent wins" : "Tie - both refunded";
     verdict = `<div class="verdict-box"><b>${w}.</b> ${d.rationale ? esc(d.rationale) : "The validator set has ruled."}</div>`;
   }
   const claimantWin = st === RULED && ruling === SIDE_CLAIMANT;
